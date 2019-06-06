@@ -32,3 +32,6 @@
 
 # Ignore database settings
 /config/database.yml
+
+# Ignore generated OS files
+.DS_Store
