@@ -1,1 +1,30 @@
-main_title: "Foodoo"
+en:
+  main_title: "Foodoo"
+  static_pages:
+    home:
+      title: "Home"
+      para1_html: "This is the home page for the %{href}"
+      welcome: "Welcome to Foodoo"
+      para2: "sample application"
+      foodoo: "Food and Drink Sample App"
+    help:
+      title: "Help"
+      para1_html: "Get help on the Ruby on Rails Tutorial at the %{link}"
+      para2_html: "To get help on this sample app, see the %{href}"
+      help_page: "help page"
+    about:
+      title: "About"
+      about_html: "The %{main_href} is a %{book_href} and %{main_href} to
+        teach web development with %{main_href}. This is the sample application
+        for the tutorial."
+    contact:
+      title: "Contact"
+      para1_html: "Contact the Ruby on Rails Tutorial about the sample app at the %{href}"
+      contact_page: "contact page"
+  url:
+    main_page: "https://www.railstutorial.org/"
+    help_page: "https://www.railstutorial.org/help"
+    about_page: "https://www.railstutorial.org/about"
+    contact_page: "https://www.railstutorial.org/contact"
+    book_page: "https://www.railstutorial.org/book"
+    author: "http://www.michaelhartl.com/"
