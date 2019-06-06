@@ -21,6 +21,14 @@ en:
       title: "Contact"
       para1_html: "Contact the Ruby on Rails Tutorial about the sample app at the %{href}"
       contact_page: "contact page"
+  users:
+    new:
+      title: "Sign up"
+      button_text: "Submit"
+  sessions:
+    new:
+      title: "Log in"
+      remember_me: "Remember me"
   url:
     main_page: "https://www.railstutorial.org/"
     help_page: "https://www.railstutorial.org/help"
@@ -28,3 +36,20 @@ en:
     contact_page: "https://www.railstutorial.org/contact"
     book_page: "https://www.railstutorial.org/book"
     author: "http://www.michaelhartl.com/"
+  controller:
+    user_not_found: "User doesnt exist"
+  name: "Your name"
+  email: "Email"
+  password: "Password"
+  confirmation: "Password Confirmation"
+  phone_number: "Phone Number"
+  address: "Address"
+  error_announce: "This form contains "
+  error: "error"
+  new_user: "New user? "
+  require_user: "Require login first"
+  app_name: "Foodoo"
+  profile: "Profile"
+  settings: "Settings"
+  log_out: "Log out"
+  account_html: 'Account <b class="caret"></b>'

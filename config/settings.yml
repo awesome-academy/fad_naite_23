@@ -1,0 +1,7 @@
+name_length: 50
+email_length: 250
+phone_max_length: 20
+address_max_length: 250
+password_min_length: 6
+checked: "1"
+avatar_size: 80
