@@ -21,6 +21,7 @@ class User < ApplicationRecord
     length: {maximum: Settings.address_max_length}
 
   before_save ->{email.downcase!}
+  scope :name_alphabet, ->{order(:name)}
 
   def remember
     self.remember_token = User.new_token

@@ -4,4 +4,6 @@ phone_max_length: 20
 address_max_length: 250
 password_min_length: 6
 checked: "1"
-avatar_size: 80
+avatar_size: 150
+index_per_page: 20
+avatar_small: 50
