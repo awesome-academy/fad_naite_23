@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_085856) do
+ActiveRecord::Schema.define(version: 2019_06_05_093344) do
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_lists", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
+  create_table "order_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
     t.integer "quantity"
     t.integer "unit_sold_price"
     t.datetime "created_at", null: false
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_085856) do
     t.index ["product_id"], name: "index_order_lists_on_product_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.integer "status"
     t.string "receiver_name"
     t.string "delivery_address"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_085856) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.integer "category_id"
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "category_id"
     t.string "name"
     t.text "description"
     t.integer "price"
@@ -50,12 +50,13 @@ ActiveRecord::Schema.define(version: 2019_06_05_085856) do
     t.float "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+  create_table "ratings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.integer "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,25 +64,34 @@ ActiveRecord::Schema.define(version: 2019_06_05_085856) do
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
-  create_table "requests", force: :cascade do |t|
+  create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "product_name"
     t.text "description"
     t.integer "status"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.string "email"
     t.string "phone_number"
     t.string "password_digest"
     t.string "remember_digest"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "order_lists", "orders"
+  add_foreign_key "order_lists", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
+  add_foreign_key "ratings", "products"
+  add_foreign_key "ratings", "users"
+  add_foreign_key "requests", "users"
 end
