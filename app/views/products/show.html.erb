@@ -43,6 +43,13 @@
                 <%= f.hidden_field :id, value: @product.id %>
                 <%= f.submit t("buy_now"), class: "btn btn-primary btn-lg btn-block" %>
               <% end %>
+              <div id="ratingform">
+                <% if current_user.rated? @product %>
+                  <%= render "shared/rating" %>
+                <% else %>
+                  <%= render "shared/rating_form" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

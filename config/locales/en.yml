@@ -120,3 +120,4 @@ en:
   details: "Details"
   buy_now: "Buy now"
   no_item_found: "No item in cart found in the database"
+  product_not_found: "Product not found"

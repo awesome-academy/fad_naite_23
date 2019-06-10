@@ -1,0 +1,5 @@
+<% (Settings.rates).each do |i| %>
+  <%= button_tag(type: "button", class: "btn btn-lg #{toggled_rating? i}") do %>
+    <i class="fa fa-star" aria-hidden="true"></i>
+  <% end %>
+<% end %>

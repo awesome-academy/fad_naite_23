@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post "/update_item", to: "carts#update_item"
   delete "/cart", to: "carts#destroy"
 
-
+  resources :ratings, only: :create
   resources :users, except: %i(index destroy)
   resources :products, only: %i(index show)
 

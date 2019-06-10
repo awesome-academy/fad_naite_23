@@ -1,0 +1,11 @@
+<%= form_for(current_rating, class: "form_group", id: "rating-ability-wrapper", remote: true) do |f| %>
+  <%= f.hidden_field :product_id, value: @product.id %>
+  <% (Settings.rates).each do |i| %>
+    <%= button_tag(type: "submit", name: "rating[rate]", value: i, class: "btnrating btn btn-default btn-lg",
+      id: "rating-star-#{i}", data: {attr: "#{i}"}) do %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+  <% end %>
+<% end %>
+
+
