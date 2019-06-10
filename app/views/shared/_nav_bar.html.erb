@@ -1,0 +1,21 @@
+<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked">
+    <li>
+      <%= link_to current_user do %>
+        <i class="fa fa-home fa-fw"></i><%= t "profile" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to edit_user_path(current_user) do %>
+        <i class="fa fa-cogs fa-fw"></i><%= t "settings" %>
+      <% end %>
+    </li>
+    <% if current_user.admin? %>
+      <li>
+        <%= link_to admin_users_path do %>
+          <i class="fa fa-users fa-fw"></i><%= t "users_index" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

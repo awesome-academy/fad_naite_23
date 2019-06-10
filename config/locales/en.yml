@@ -25,10 +25,17 @@ en:
     new:
       title: "Sign up"
       button_text: "Submit"
+    edit:
+      title: "Edit your profile"
+      button_text: "Change"
   sessions:
     new:
       title: "Log in"
       remember_me: "Remember me"
+  admin:
+    users:
+      index:
+        title: "All users"
   url:
     main_page: "https://www.railstutorial.org/"
     help_page: "https://www.railstutorial.org/help"
@@ -47,9 +54,15 @@ en:
   error_announce: "This form contains "
   error: "error"
   new_user: "New user? "
-  require_user: "Require login first"
+  require_login: "Require login first"
   app_name: "Foodoo"
   profile: "Profile"
   settings: "Settings"
   log_out: "Log out"
   account_html: 'Account <b class="caret"></b>'
+  invalid_email_password: "Invalid email/password"
+  delete: "Delete"
+  you_sure: "Are you sure?"
+  user_deleted: "User deleted successfully"
+  delete_failed: "Delete failed"
+  users_index: "Users"
