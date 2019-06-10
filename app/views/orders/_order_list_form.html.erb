@@ -1,0 +1,32 @@
+<tr>
+  <td class="col-sm-8 col-md-6">
+    <div class="media">
+      <%= link_to product_path(order_list.product), class: "thumbnail pull-left" do %>
+      <%= image_tag order_list.product.picture, class:"media-object" %>
+      <% end %>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="#"><%= order_list.product.name %></a></h4>
+        <h5 class="media-heading"> by <a href="#"><%= order_list.product.category.name %></a></h5>
+      </div>
+    </div>
+  </td>
+  <%= form_for(order_list) do |f| %>
+    <td class="col-sm-1 col-md-1 text-center" >
+      <%= f.number_field :quantity, value: order_list.quantity, min: Settings.min_quantity, class: "form-control" %>
+    </td>
+    <td class="col-sm-1 col-md-1 text-center"><strong><%= order_list.unit_sold_price %></strong></td>
+    <td class="col-sm-1 col-md-1 text-center"><strong><%= order_list.unit_sold_price * order_list.quantity %></strong></td>
+    <td class="col-sm-1 col-md-1">
+      <%= link_to order_list_path(id: order_list.id, order_id: order_list.order.id),
+        method: :delete, class: "btn btn-danger" do %>
+        <span class="glyphicon glyphicon-remove"></span><%= t "carts.show.remove" %>
+      <% end %>
+    </td>
+    <%= hidden_field_tag :order_id, order_list.order.id %>
+    <td class="col-sm-1 col-md-1">
+      <%= button_tag(type: "submit", class: "btn btn-info") do %>
+        <span class="glyphicon glyphicon-refresh"></span>
+      <% end %>
+    </td>
+  <% end %>
+</tr>

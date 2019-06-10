@@ -18,34 +18,36 @@
             <td></td>
             <td></td>
             <td><h5><%= t ".subtotal" %></h5></td>
-            <td class="text-right"><h5><strong><%= @cart_total %></strong></h5></td>
+            <td class="text-right"><h5><strong><%= number_to_currency(@cart_total) %></strong></h5></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td><h5><%= t "discount" %></h5></td>
-            <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+            <td><h5><%= t "order.show.fee" %></h5></td>
+            <td class="text-right"><h5><strong><%= number_to_currency(@cart_total * Settings.fee) %></strong></h5></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td><h3><%= t ".total" %></h3></td>
-            <td class="text-right"><h3><strong><%= @cart_total %></strong></h3></td>
+            <td class="text-right"><h3><strong><%= number_to_currency(@cart_total + @cart_total * Settings.fee) %></strong></h3></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td>
-            <button type="button" class="btn btn-default">
-              <span class="glyphicon glyphicon-shopping-cart"></span><%= t ".continue" %>
-            </button></td>
+              <%= link_to(products_path, type: "button", class: "btn btn-default") do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span><%= t ".continue" %>
+              <% end %>
+            </td>
             <td>
-            <button type="button" class="btn btn-success">
-              <%= t ".checkout" %><span class="glyphicon glyphicon-play"></span>
-            </button></td>
+              <%= link_to(new_order_path, type: "button", class: "btn btn-default") do %>
+                <%= t ".checkout" %><span class="glyphicon glyphicon-play"></span>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

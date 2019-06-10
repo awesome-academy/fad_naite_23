@@ -1,0 +1,62 @@
+<%= provide :title, t(".title") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t ".product" %></th>
+            <th><%= t ".quantity" %></th>
+            <th class="text-center"><%= t ".price" %></th>
+            <th class="text-center"><%= t ".total" %></th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "order_list_form", collection: @order.order_lists, as: :order_list %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h5><%= t ".subtotal" %></h5></td>
+            <td class="text-right"><h5><strong><%= number_to_currency(@sub_total) %></strong></h5></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h5><%= t ".fee" %></h5></td>
+            <td class="text-right"><h5><strong></strong><%= number_to_currency(@sub_total * Settings.fee) %></h5></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h3><%= t ".total" %></h3></td>
+            <td class="text-right"><h3><strong><%= number_to_currency(@sub_total + @sub_total * Settings.fee) %></strong></h3></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= form_for(@order, class: "form-row") do |f| %>
+        <div class="col-md-3 mb-3">
+          <%= f.label :receiver_name, t("name") %>
+          <%= f.text_field :receiver_name, class: "form-control" %>
+        </div>
+        <div class="col-md-4 mb-3">
+          <%= f.label :delivery_address, t("address") %>
+          <%= f.text_field :delivery_address, class: "form-control" %>
+        </div>
+        <div class="col-md-3 mb-3">
+          <%= f.label :receiver_phone_number, t("name") %>
+          <%= f.text_field :receiver_phone_number, class: "form-control" %>
+        </div>
+        <div class="col-md-2 mb-3">
+          <%= f.label :submit, t(".button_text") %>
+          <%= button_tag(type: "submit", class: "btn btn-info form-control") do %>
+            <span class="glyphicon glyphicon-refresh"></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

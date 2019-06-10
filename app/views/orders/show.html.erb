@@ -1,0 +1,63 @@
+<%= provide :title, t(".title") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t ".product" %></th>
+            <th><%= t ".quantity" %></th>
+            <th class="text-center"><%= t ".price" %></th>
+            <th class="text-center"><%= t ".total" %></th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "order_list", collection: @order.order_lists %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h5><%= t ".subtotal" %></h5></td>
+            <td class="text-right"><h5><strong><%= number_to_currency(@sub_total) %></strong></h5></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h5><%= t ".fee" %></h5></td>
+            <td class="text-right"><h5><strong></strong><%= number_to_currency(@sub_total * Settings.fee) %></h5></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h3><%= t ".total" %></h3></td>
+            <td class="text-right"><h3><strong><%= number_to_currency(@sub_total + @sub_total * Settings.fee) %></strong></h3></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <%= link_to(orders_path, type: "button", class: "btn btn-default") do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span><%= t ".history" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to(edit_order_path(@order), class: "btn btn-info") do %>
+                <%= t ".edit" %><span class="glyphicon glyphicon-play"></span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to(order_path(@order), method: :delete,
+                data: {confirm: t("you_sure")}, class: "btn btn-danger") do %>
+                <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

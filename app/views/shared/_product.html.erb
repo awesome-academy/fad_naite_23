@@ -1,12 +1,12 @@
 <div class="col-md-3 column productbox">
-  <% path = current_user.admin? ? admin_product_path(product): product %>
+  <% path = logged_admin? ? admin_product_path(product) : product %>
   <%= link_to path do %>
     <%= image_tag product.picture, class: "img-responsive" %>
     <div class="producttitle"><%= product.name %></div>
   <% end %>
   <div class="productprice">
     <div class="pull-right">
-      <% if current_user.admin? %>
+      <% if logged_admin? %>
         <%= link_to t("delete"), admin_product_path(product),
           method: :delete, data: {confirm: t("you_sure")},
           class: "btn btn-danger btn-sm"

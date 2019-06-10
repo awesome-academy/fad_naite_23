@@ -1,0 +1,20 @@
+<tr>
+  <td class="col-sm-8 col-md-6">
+    <div class="media">
+      <%= link_to product_path(order_list.product), class: "thumbnail pull-left" do %>
+      <%= image_tag order_list.product.picture, class:"media-object" %>
+      <% end %>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="#"><%= order_list.product.name %></a></h4>
+        <h5 class="media-heading"> by <a href="#"><%= order_list.product.category.name %></a></h5>
+      </div>
+    </div>
+  </td>
+  <td class="col-sm-1 col-md-1 text-center" >
+    <%= order_list.quantity %>
+  </td>
+  <td class="col-sm-1 col-md-1 text-center"><strong><%= order_list.unit_sold_price %></strong></td>
+  <td class="col-sm-1 col-md-1 text-center"><strong><%= order_list.unit_sold_price * order_list.quantity %></strong></td>
+  <td></td>
+  <td></td>
+</tr>
