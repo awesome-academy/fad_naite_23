@@ -1,4 +1,8 @@
 en:
+  number:
+    currency:
+      format:
+        unit: "$"
   main_title: "Foodoo"
   static_pages:
     home:
@@ -32,6 +36,11 @@ en:
     new:
       title: "Log in"
       remember_me: "Remember me"
+  products:
+    index:
+      title: "Our products"
+    show:
+      title: "Buy now"
   admin:
     users:
       index:
@@ -42,6 +51,9 @@ en:
       new:
         title: "Create a new product"
         button_text: "Submit"
+      edit:
+        title: "Edit product"
+        button_text: "Change"
   url:
     main_page: "https://www.railstutorial.org/"
     help_page: "https://www.railstutorial.org/help"
@@ -88,3 +100,10 @@ en:
   create_failed: "Failed to create product"
   products_index: "Products"
   create: "Create"
+  product_delete: "Product delete successfully"
+  update_success: "Updated successfully"
+  update_failed: "Update failed"
+  edit: "Edit"
+  deliverable: "Delivery in all territory"
+  know_more: "know more about delivery time and shipping forms"
+  choose_quantity: "Choose the quantity"

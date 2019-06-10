@@ -1,4 +1,4 @@
-<%= form_for(@product, url: admin_products_path) do |f| %>
+<%= form_for [:admin, @product] do |f| %>
   <%= render "shared/error_messages", object: f.object %>
 
   <%= f.label :name, t("product_name") %>
@@ -9,13 +9,12 @@
 
   <%= f.label :discount, t("discount") %>
   <%= f.number_field :discount, class: "form-control" %>
-
-  <%= f.radio_button :product_type, Settings.food, checked: false,
+  <%= f.radio_button :product_type, Settings.food, checked: @product.product_type == Settings.food,
     data: {behavior: "clickable"}, class: "radioform col-sm-1" %>
   <%= f.label :product_type, t("food"), class: "col-sm-3 control-label",
     value: Settings.drink %>
 
-  <%= f.radio_button :product_type, Settings.drink, checked: false,
+  <%= f.radio_button :product_type, Settings.drink,
     data: {behavior: "clickable"}, class: "radioform col-sm-1" %>
   <%= f.label :product_type, t("drink"), class: "col-sm-3 control-label",
     value: Settings.drink  %>

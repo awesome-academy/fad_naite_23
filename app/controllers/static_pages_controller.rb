@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
-  def home; end
+  def home
+    @products = Product.newest.take(Settings.slider_number)
+  end
 
   def help; end
 

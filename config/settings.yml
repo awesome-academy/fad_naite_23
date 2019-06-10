@@ -11,3 +11,4 @@ description_length: 500
 max_upload_size: 5
 drink: "drink"
 food: "food"
+slider_number: 4

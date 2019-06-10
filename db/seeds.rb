@@ -20,10 +20,26 @@ User.create!(name: "admin",
     password_confirmation: password)
 end
 
-
 5.times do |n|
   name = Faker::Restaurant.type
   description = Faker::Food.description
   Category.create!(name: name,
     description: description)
+end
+
+categories = Category.all
+types = ["food", "drink"]
+10.times do |n|
+  name = Faker::Food.dish
+  description = Faker::Food.description
+  price = Faker::Number.number(3)
+  picture = "http://placehold.it/460x250/e67e22/ffffff&text=HTML5"
+  product_type = types.sample
+  categories.each do |category|
+    category.products.create!(name: name,
+    description: description,
+    price: price,
+    picture: picture,
+    product_type: product_type)
+  end
 end

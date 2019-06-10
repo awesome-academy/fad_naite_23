@@ -4,6 +4,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("static_pages.home.title"), root_path %></li>
+         <li><%= link_to t("admin.products.index.title"), products_path %></li>
         <li><%= link_to t("static_pages.help.title"), help_path %></li>
         <% if logged_in? %>
           <li class="dropdown">
