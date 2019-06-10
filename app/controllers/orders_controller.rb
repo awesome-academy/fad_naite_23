@@ -67,12 +67,6 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
-  def calc_sub_total
-    @sub_total = @order.order_lists.reduce(0) do |sum, item|
-      sum + item.unit_sold_price * item.quantity
-    end
-  end
-
   def begin_order_transaction
     Order.transaction do
       @order.save!

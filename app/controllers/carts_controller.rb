@@ -24,7 +24,7 @@ class CartsController < ApplicationController
     return if @cart.empty?
     @products = Product.newest.in_cart(@cart.keys)
     @cart_total = @products.reduce(@cart_total) do |sum, product|
-      discount = product.discount ? product.discount : 1
+      discount = product.discount ? product.discount : Settings.no_discount
       sum + product.price * discount * @cart[product.id.to_s]
     end
   end

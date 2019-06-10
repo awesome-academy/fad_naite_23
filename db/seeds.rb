@@ -43,3 +43,12 @@ types = ["food", "drink"]
     product_type: product_type)
   end
 end
+
+users = User.all.take(6)
+products = Product.all.take(6)
+users.each_with_index do |user, idx|
+  order = user.orders.create! receiver_name: user.name, delivery_address: user.address,
+    receiver_phone_number: user.phone_number
+  order.order_lists.create! product_id: products[idx].id, quantity: 1,
+    unit_sold_price: products[idx].price
+end

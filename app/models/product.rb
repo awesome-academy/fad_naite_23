@@ -15,6 +15,7 @@ class Product < ApplicationRecord
 
   scope :newest, ->{order created_at: :desc}
   scope :in_cart, ->(ids){where id: ids}
+  scope :by_type, ->(type){where(product_type: type) if type.present?}
 
   # mount_uploader :picture, PictureUploader
 

@@ -3,8 +3,12 @@ class Admin::ProductsController < ApplicationController
   before_action :load_categories, only: %i(new edit)
 
   def index
-    @products = Product.newest.paginate page: params[:page],
-      per_page: Settings.index_per_page
+    if params[:search]
+      query_search_products
+    else
+      @products = Product.newest.paginate page: params[:page],
+        per_page: Settings.index_per_page
+    end
   end
 
   def show; end

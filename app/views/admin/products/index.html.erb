@@ -3,7 +3,19 @@
   <div class="row">
     <%= render "shared/nav_bar" %>
     <div class="col-md-9 well">
-      <%= link_to t("create"), new_admin_product_path, class: "btn btn-lg btn-primary" %>
+      <div class="row">
+        <%= form_tag admin_products_path, method: "get" do %>
+          <%= link_to t("create"), new_admin_product_path, class: "btn btn-lg btn-primary" %>
+          <%= button_tag(type: "submit", name: "search", value: "food",
+            class: "btn btn-lg btn-warning") do %>
+             <%= t "food" %>
+          <% end %>
+          <%= button_tag(type: "submit", name: "search", value: "drink",
+            class: "btn btn-lg btn-info") do%>
+            <%= t "drink" %>
+          <% end %>
+        <% end %>
+      <div>
       <h2><%= t ".title" %></h2>
       <%= will_paginate %>
       <ul class="users">
