@@ -12,3 +12,4 @@ max_upload_size: 5
 drink: "drink"
 food: "food"
 slider_number: 4
+min_quantity: 1

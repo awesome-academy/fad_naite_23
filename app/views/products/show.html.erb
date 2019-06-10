@@ -37,10 +37,12 @@
               <% end %>
               <p class="mb-0"><i class="fa fa-truck"></i><%= t "deliverable" %></p>
               <div class="text-muted mb-2"><small><%= t "know_more" %></small></div>
-              <label for="quant"><%= t "quantity" %></label>
-              <input type="number" name="quantity" min="1" id="quant" class="form-control mb-5 input-lg">
-              <button class="btn btn-primary btn-lg btn-block"><%= t "buy" %></button>
-              <%= link_to t("edit"), edit_admin_product_path(@product), class: "btn btn-danger btn-sm" %>
+              <%= form_for :cart, url: update_item_path do |f| %>
+                <%= f.label :quantity, t("quantity") %>
+                <%= f.number_field :quantity, value: nil, min: Settings.min_quantity, class: "form-control mb-5 input-lg" %>
+                <%= f.hidden_field :id, value: @product.id %>
+                <%= f.submit t("buy_now"), class: "btn btn-primary btn-lg btn-block" %>
+              <% end %>
             </div>
           </div>
         </div>

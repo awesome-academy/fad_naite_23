@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  get "/cart", to: "carts#show"
+  post "/remove_item", to: "carts#remove_item"
+  post "/update_item", to: "carts#update_item"
+  delete "/cart", to: "carts#destroy"
+
+
   resources :users, except: %i(index destroy)
   resources :products, only: %i(index show)
 

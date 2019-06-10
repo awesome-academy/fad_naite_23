@@ -13,7 +13,8 @@ class Product < ApplicationRecord
   validates :product_type, presence: true
   validate  :picture_size
 
-  scope :newest, ->{order(created_at: :desc)}
+  scope :newest, ->{order created_at: :desc}
+  scope :in_cart, ->(ids){where id: ids}
 
   # mount_uploader :picture, PictureUploader
 

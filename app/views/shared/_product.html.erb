@@ -1,5 +1,5 @@
 <div class="col-md-3 column productbox">
-  <% path = current_user.admin? ? product : admin_product_path(product) %>
+  <% path = current_user.admin? ? admin_product_path(product): product %>
   <%= link_to path do %>
     <%= image_tag product.picture, class: "img-responsive" %>
     <div class="producttitle"><%= product.name %></div>
@@ -12,7 +12,7 @@
           class: "btn btn-danger btn-sm"
         %>
       <% else %>
-        <%= link_to t("buy"), "#", class: "btn btn-danger btn-sm" %>
+        <%= link_to t("details"), product_path(product), class: "btn btn-danger btn-sm" %>
       <% end %>
     </div>
     <div class="pricetext"><%= number_to_currency product.price %></div>
