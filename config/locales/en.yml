@@ -36,6 +36,12 @@ en:
     users:
       index:
         title: "All users"
+    products:
+      index:
+        title: "All products"
+      new:
+        title: "Create a new product"
+        button_text: "Submit"
   url:
     main_page: "https://www.railstutorial.org/"
     help_page: "https://www.railstutorial.org/help"
@@ -45,6 +51,7 @@ en:
     author: "http://www.michaelhartl.com/"
   controller:
     user_not_found: "User doesnt exist"
+    product_not_found: "Product doesnt exist"
   name: "Your name"
   email: "Email"
   password: "Password"
@@ -66,3 +73,18 @@ en:
   user_deleted: "User deleted successfully"
   delete_failed: "Delete failed"
   users_index: "Users"
+  create_product: "Write your description about the product"
+  less_than_5mb: "size should be less than 5mb"
+  product_name: "Product name"
+  price: "Price"
+  discount: "Discount"
+  category: "Category"
+  type: "Type"
+  description: "Description"
+  picture: "Picture"
+  food: "Food"
+  drink: "Drink"
+  product_created: "Product created successfully"
+  create_failed: "Failed to create product"
+  products_index: "Products"
+  create: "Create"

@@ -1,0 +1,15 @@
+<% provide :title, t(".title") %>
+<div class="container">
+  <div class="row">
+    <%= render "shared/nav_bar" %>
+    <div class="col-md-9 well">
+      <%= link_to t("create"), new_admin_product_path, class: "btn btn-lg btn-primary" %>
+      <h2><%= t ".title" %></h2>
+      <%= will_paginate %>
+      <ul class="users">
+        <%= render @products %>
+      </ul>
+      <%= will_paginate %>
+    </div>
+  </div>
+</div>

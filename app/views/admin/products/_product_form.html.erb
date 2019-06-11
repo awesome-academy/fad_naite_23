@@ -1,0 +1,35 @@
+<%= form_for(@product, url: admin_products_path) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label :name, t("product_name") %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :price, t("price") %>
+  <%= f.number_field :price, class: "form-control" %>
+
+  <%= f.label :discount, t("discount") %>
+  <%= f.number_field :discount, class: "form-control" %>
+
+  <%= f.radio_button :product_type, Settings.food, checked: false,
+    data: {behavior: "clickable"}, class: "radioform col-sm-1" %>
+  <%= f.label :product_type, t("food"), class: "col-sm-3 control-label",
+    value: Settings.drink %>
+
+  <%= f.radio_button :product_type, Settings.drink, checked: false,
+    data: {behavior: "clickable"}, class: "radioform col-sm-1" %>
+  <%= f.label :product_type, t("drink"), class: "col-sm-3 control-label",
+    value: Settings.drink  %>
+  <br></br>
+  <%= f.label :category, t("category") %>
+  <%= f.collection_select :category_id, @categories, :id, :name, {prompt: true}, {class: "form-control"} %>
+
+  <%= f.label :description, t("description") %>
+  <div class="field">
+    <%= f.text_area :description, placeholder: t("create_product") %>
+  </div>
+  <%= f.label :picture, t("picture") %>
+  <span class="picture">
+    <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
