@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card mb-10">
+          <div class="card-body store-body">
+            <div class="product-info">
+              <div class="product-gallery">
+                <div class="product-gallery-thumbnails">
+                  <ol class="thumbnails-list list-unstyled">
+                    <li><img src="https://via.placeholder.com/350x350/ffcf5b" alt=""></li>
+                    <li><img src="https://via.placeholder.com/350x350/f16a22" alt=""></li>
+                    <li><img src="https://via.placeholder.com/350x350/d3ffce" alt=""></li>
+                    <li><img src="https://via.placeholder.com/350x350/7937fc" alt=""></li>
+                    <li><img src="https://via.placeholder.com/350x350/930000" alt=""></li>
+                  </ol>
+                </div>
+                <div class="product-gallery-featured">
+                  <%= image_tag @product.picture %>
+                </div>
+              </div>
+              <div class="product-seller-recommended">
+                <!-- /.recommended-items-->
+                <div class="product-description mb-5">
+                  <h2 class="mb-5">Description</h2>
+                  <p><%= @product.description %></p>
+                </div>
+              </div>
+            </div>
+            <div class="product-payment-details">
+              <h4 class="product-title mb-2"><%= @product.name %></h4>
+              <h2 class="product-price display-4"><%= number_to_currency @product.price%></h2>
+              <% if @product.discount? %>
+                <p class="text-success">
+                <i class="fa fa-credit-card"></i>
+                <%= @product.price * @discount%>
+                </p>
+              <% end %>
+              <%= link_to t("edit"), edit_admin_product_path(@product), class: "btn btn-primary btn-lg btn-block" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

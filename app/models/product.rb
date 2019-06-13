@@ -15,7 +15,7 @@ class Product < ApplicationRecord
 
   scope :newest, ->{order(created_at: :desc)}
 
-  mount_uploader :picture, PictureUploader
+  # mount_uploader :picture, PictureUploader
 
   private
 

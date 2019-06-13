@@ -15,6 +15,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: %i(index destroy)
-    resources :products, except: %i(show)
+    resources :products
   end
 end

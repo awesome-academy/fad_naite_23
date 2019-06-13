@@ -7,9 +7,8 @@
       <h2><%= t ".title" %></h2>
       <%= will_paginate %>
       <ul class="users">
-        <%= render @products %>
+        <%= render partial: "shared/product", collection: @products %>
       </ul>
-      <%= will_paginate %>
     </div>
   </div>
 </div>

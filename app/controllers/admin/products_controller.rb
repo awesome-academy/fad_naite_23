@@ -1,14 +1,16 @@
 class Admin::ProductsController < ApplicationController
-  before_action :load_product, only: :destroy
+  before_action :load_product, except: %i(index new create)
+  before_action :load_categories, only: %i(new edit)
 
   def index
     @products = Product.newest.paginate page: params[:page],
       per_page: Settings.index_per_page
   end
 
+  def show; end
+
   def new
     @product = Product.new
-    @categories = Category.all
   end
 
   def create
@@ -22,6 +24,18 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @product.update_attributes product_params
+      flash[:success] = t "update_success"
+      redirect_to admin_products_path
+    else
+      flash[:danger] = t "update_failed"
+      render :edit
+    end
+  end
+
   def destroy
     flash[:success] = @product.destroy ? t("product_delete") : t("delete_failed")
     redirect_to admin_products_path
@@ -32,5 +46,9 @@ class Admin::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit :name, :description, :product_type,
       :category_id, :price, :discount, :picture
+  end
+
+  def load_categories
+    @categories = Category.newest
   end
 end
