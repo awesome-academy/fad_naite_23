@@ -1,0 +1,31 @@
+<tr>
+  <td class="col-sm-8 col-md-6">
+    <div class="media">
+      <%= link_to product_path(product), class: "thumbnail pull-left" do %>
+      <%= image_tag product.picture, class:"media-object" %>
+      <% end %>
+      <div class="media-body">
+          <h4 class="media-heading"><a href="#"><%= product.name %></a></h4>
+          <h5 class="media-heading"> by <a href="#"><%= product.category.name %></a></h5>
+      </div>
+    </div>
+  </td>
+  <%= form_for(:cart, url: update_item_path) do |f| %>
+    <td class="col-sm-1 col-md-1 text-center" >
+      <%= f.number_field :quantity, value: @cart[product.id.to_s], min: Settings.min_quantity, class: "form-control" %>
+    </td>
+    <td class="col-sm-1 col-md-1 text-center"><strong><%= product.price %></strong></td>
+    <td class="col-sm-1 col-md-1 text-center"><strong><%= product.price * @cart[product.id.to_s] %></strong></td>
+    <td class="col-sm-1 col-md-1">
+      <%= link_to remove_item_path(cart: {id: product.id}), method: :post, class: "btn btn-danger" do %>
+        <span class="glyphicon glyphicon-remove"></span><%= t "carts.show.remove" %>
+      <% end %>
+    </td>
+    <%= f.hidden_field :id, value: product.id %>
+    <td class="col-sm-1 col-md-1">
+      <%= button_tag(type: "submit", class: "btn btn-info") do %>
+        <span class="glyphicon glyphicon-refresh"></span>
+      <% end %>
+    </td>
+  <% end %>
+</tr>

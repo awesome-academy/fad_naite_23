@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  before_action :set_cart
+
   private
 
   def require_log_in
@@ -25,5 +27,12 @@ class ApplicationController < ActionController::Base
     return if @product = Product.find_by(id: params[:id])
     flash[:danger] = t "controller.product_not_found"
     redirect_to root_url
+  end
+
+  def set_cart
+    session[:cart] ||= {}
+    session[:cart_total] ||= 0
+    @cart = session[:cart]
+    @cart_total = session[:cart_total]
   end
 end

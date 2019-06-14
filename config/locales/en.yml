@@ -41,6 +41,16 @@ en:
       title: "Our products"
     show:
       title: "Buy now"
+  carts:
+    show:
+      product: "Product"
+      quantity: "Quantity"
+      price: "Price"
+      total: "Total"
+      subtotal: "Subtotal"
+      continue: "Continue shopping"
+      checkout: "Checkout"
+      remove: "Remove"
   admin:
     users:
       index:
@@ -107,3 +117,6 @@ en:
   deliverable: "Delivery in all territory"
   know_more: "know more about delivery time and shipping forms"
   choose_quantity: "Choose the quantity"
+  details: "Details"
+  buy_now: "Buy now"
+  no_item_found: "No item in cart found in the database"
