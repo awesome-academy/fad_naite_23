@@ -60,4 +60,8 @@ module SessionsHelper
   def toggled_rating? rate_points
     rate_points <= current_rating.rate.to_i ? "btn-warning" : "btn-default"
   end
+
+  def logged_admin?
+    logged_in? && current_user.admin?
+  end
 end

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :ratings, only: :create
   resources :users, except: %i(index destroy)
   resources :products, only: %i(index show)
+  resources :orders
+  resources :order_lists, only: %i(update destroy)
 
   namespace :admin do
     resources :users, only: %i(index destroy)

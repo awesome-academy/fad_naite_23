@@ -1,0 +1,13 @@
+<%= form_for @order do |f| %>
+  <%= render "shared/error_messages", object: f.object%>
+  <%= f.label :receiver_name, t("name") %>
+  <%= f.text_field :receiver_name, class: "form-control" %>
+
+  <%= f.label :delivery_address, t("address") %>
+  <%= f.text_field :delivery_address, class: "form-control" %>
+
+  <%= f.label :receiver_phone_number, t("phone_number") %>
+  <%= f.text_field :receiver_phone_number, class: "form-control" %>>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

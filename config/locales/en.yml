@@ -51,6 +51,20 @@ en:
       continue: "Continue shopping"
       checkout: "Checkout"
       remove: "Remove"
+  orders:
+    new:
+      title: "Order information"
+      button_text: "Submit"
+    show:
+      title: "Order"
+      history: "History orders"
+      edit: "Edit"
+      fee: "VAT 5%"
+    index:
+      status: "Status"
+    edit:
+      title: "Edit order"
+      button_text: "Submit"
   admin:
     users:
       index:
@@ -121,3 +135,7 @@ en:
   buy_now: "Buy now"
   no_item_found: "No item in cart found in the database"
   product_not_found: "Product not found"
+  order_not_found: "Order does not exist"
+  cant_order: "Something wrong. Cant complete order"
+  order_not_valid: "Order is not valid(maybe pending)"
+  order_list_not_found: "Order item does not exist"

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_log_in, :load_user, only: %i(show edit update)
+  before_action :require_log_in, :load_user, :correct_user,
+    only: %i(show edit update)
+
   def show; end
 
   def new
@@ -32,5 +34,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :phone_number, :address,
       :password, :password_confirmation)
+  end
+
+  def correct_user
+    redirect_to root_url unless current_user?(@user)
   end
 end
