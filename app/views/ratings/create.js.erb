@@ -1,0 +1,5 @@
+<% if @flag %>
+  $('#ratingform').html('<%= j render "shared/rating" %>');
+<% else %>
+  $('#ratingform').html('<%= j render "shared/rating_form" %>');
+<% end %>

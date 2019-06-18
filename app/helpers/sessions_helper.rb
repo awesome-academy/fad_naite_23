@@ -48,4 +48,16 @@ module SessionsHelper
   def current_user? user
     current_user == user
   end
+
+  def current_rating
+    if current_user.rated? @product
+      current_user.ratings.find_by product_id: @product.id
+    else
+      current_user.ratings.build
+    end
+  end
+
+  def toggled_rating? rate_points
+    rate_points <= current_rating.rate.to_i ? "btn-warning" : "btn-default"
+  end
 end

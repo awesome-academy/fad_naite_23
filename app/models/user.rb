@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :requests, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :products, through: :ratings
 
   has_secure_password
 
@@ -36,6 +37,10 @@ class User < ApplicationRecord
 
   def forget
     update_attributes remember_digest: nil
+  end
+
+  def rated? product
+    products.include? product
   end
 
   class << self

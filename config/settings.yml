@@ -13,3 +13,4 @@ drink: "drink"
 food: "food"
 slider_number: 4
 min_quantity: 1
+rates: !ruby/range 1..5
