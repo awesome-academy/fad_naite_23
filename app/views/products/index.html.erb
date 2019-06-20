@@ -1,4 +1,16 @@
 <h1><%= t ".title" %></h1>
+<div class="row">
+  <%= form_tag products_path, method: "get" do %>
+    <%= button_tag(type: "submit", name: "search", value: "food",
+      class: "btn btn-lg btn-warning") do %>
+        <%= t "food" %>
+    <% end %>
+    <%= button_tag(type: "submit", name: "search", value: "drink",
+      class: "btn btn-lg btn-info") do%>
+      <%= t "drink" %>
+    <% end %>
+  <% end %>
+<div>
 <%= will_paginate %>
 <ul class="users">
   <%= render partial: "shared/product", collection: @products %>

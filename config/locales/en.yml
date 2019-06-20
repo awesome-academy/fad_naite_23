@@ -11,6 +11,7 @@ en:
       welcome: "Welcome to Foodoo"
       para2: "sample application"
       foodoo: "Food and Drink Sample App"
+      cart_header: "Cart: %{count} items"
     help:
       title: "Help"
       para1_html: "Get help on the Ruby on Rails Tutorial at the %{link}"
@@ -78,6 +79,11 @@ en:
       edit:
         title: "Edit product"
         button_text: "Change"
+    orders:
+      index:
+        title: "Orders"
+      show:
+        title: "Details"
   url:
     main_page: "https://www.railstutorial.org/"
     help_page: "https://www.railstutorial.org/help"
@@ -88,7 +94,7 @@ en:
   controller:
     user_not_found: "User doesnt exist"
     product_not_found: "Product doesnt exist"
-  name: "Your name"
+  name: "Name"
   email: "Email"
   password: "Password"
   confirmation: "Password Confirmation"
@@ -139,3 +145,9 @@ en:
   cant_order: "Something wrong. Cant complete order"
   order_not_valid: "Order is not valid(maybe pending)"
   order_list_not_found: "Order item does not exist"
+  not_pending: "is not pending"
+  orders_index: "Orders"
+  status:
+    accepted: "Accepted"
+    pending: "Pending"
+    cancelled: "Cancelled"

@@ -35,4 +35,17 @@ class ApplicationController < ActionController::Base
     @cart = session[:cart]
     @cart_total = session[:cart_total]
   end
+
+  def calc_sub_total
+    @sub_total = @order.order_lists.reduce(0) do |sum, item|
+      sum + item.unit_sold_price * item.quantity
+    end
+  end
+
+  def query_search_products
+    @products = Product.newest.by_type(params[:search]).paginate(
+      page: params[:page],
+      per_page: Settings.index_per_page
+    )
+  end
 end

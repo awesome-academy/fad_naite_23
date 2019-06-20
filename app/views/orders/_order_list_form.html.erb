@@ -24,7 +24,7 @@
     </td>
     <%= hidden_field_tag :order_id, order_list.order.id %>
     <td class="col-sm-1 col-md-1">
-      <%= button_tag(type: "submit", class: "btn btn-info") do %>
+      <%= f.button(type: "submit", class: "btn btn-info") do %>
         <span class="glyphicon glyphicon-refresh"></span>
       <% end %>
     </td>

@@ -2,8 +2,7 @@ class ProductsController < ApplicationController
   before_action :load_product, only: :show
 
   def index
-    @products = Product.newest.paginate page: params[:page],
-      per_page: Settings.index_per_page
+    query_search_products
   end
 
   def show; end
