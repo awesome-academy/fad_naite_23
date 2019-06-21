@@ -16,3 +16,5 @@ min_quantity: 1
 rates: !ruby/range 1..5
 fee: 0.05
 no_discount: 1
+desc: "desc"
+asc: "asc"

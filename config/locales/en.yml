@@ -40,6 +40,10 @@ en:
   products:
     index:
       title: "Our products"
+      similar_category: "Similar category"
+      price_orders: "Price"
+      rating: "Rating"
+      type: "Type"
     show:
       title: "Buy now"
   carts:
@@ -151,3 +155,5 @@ en:
     accepted: "Accepted"
     pending: "Pending"
     cancelled: "Cancelled"
+  average_rating: "Average rating: "
+  your_rating: "Your rating:"

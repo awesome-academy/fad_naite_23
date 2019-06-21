@@ -16,8 +16,11 @@ class Product < ApplicationRecord
   scope :newest, ->{order created_at: :desc}
   scope :in_cart, ->(ids){where id: ids}
   scope :by_type, ->(type){where(product_type: type) if type.present?}
+  scope :category, ->(id){where category_id: id}
+  scope :top_rating, ->(_rating){reorder average_rating: :desc}
+  scope :price, ->(arrange){reorder price: arrange.parameterize.to_sym}
 
-  # mount_uploader :picture, PictureUploader
+  mount_uploader :picture, PictureUploader
 
   private
 

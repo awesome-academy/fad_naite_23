@@ -15,7 +15,7 @@
                   </ol>
                 </div>
                 <div class="product-gallery-featured">
-                  <%= image_tag @product.picture %>
+                  <%= image_tag @product.picture.url %>
                 </div>
               </div>
               <div class="product-seller-recommended">
@@ -23,6 +23,8 @@
                 <div class="product-description mb-5">
                   <h2 class="mb-5"><%= t "description" %></h2>
                   <p><%= @product.description %></p>
+                </div>
+                <div class="product-description mb-5">
                 </div>
               </div>
             </div>
@@ -39,17 +41,20 @@
               <div class="text-muted mb-2"><small><%= t "know_more" %></small></div>
               <%= form_for :cart, url: update_item_path do |f| %>
                 <%= f.label :quantity, t("quantity") %>
-                <%= f.number_field :quantity, value: nil, min: Settings.min_quantity, class: "form-control mb-5 input-lg" %>
+                <%= f.number_field :quantity, value: Settings.min_quantity,
+                  min: Settings.min_quantity, class: "form-control mb-5 input-lg" %>
                 <%= f.hidden_field :id, value: @product.id %>
                 <%= f.submit t("buy_now"), class: "btn btn-primary btn-lg btn-block" %>
               <% end %>
-              <div id="ratingform">
-                <% if current_user.rated? @product %>
-                  <%= render "shared/rating" %>
-                <% else %>
-                  <%= render "shared/rating_form" %>
-                <% end %>
-              </div>
+              <% if logged_in? %>
+                <div id="ratingform">
+                  <% if current_user.rated? @product %>
+                    <%= render "shared/rating" %>
+                  <% else %>
+                    <%= render "shared/rating_form" %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

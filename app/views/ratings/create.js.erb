@@ -1,5 +1,6 @@
-<% if @flag %>
-  $('#ratingform').html('<%= j render "shared/rating" %>');
-<% else %>
+<% if @rating.errors.any? %>
   $('#ratingform').html('<%= j render "shared/rating_form" %>');
+  $('#rating-score').html('<%= @product.average_rating %>');
+<% else %>
+  $('#ratingform').html('<%= j render "shared/rating" %>');
 <% end %>

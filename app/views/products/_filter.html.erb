@@ -1,0 +1,52 @@
+<% types = [Settings.food, Settings.drink] %>
+<% price_orders = [Settings.asc, Settings.desc] %>
+<aside class="col-sm-3">
+  <div class="card">
+    <article class="card-group-item">
+      <header class="card-header"><h6 class="title"><%= t "products.index.similar_category" %></h6></header>
+      <div class="filter-content">
+        <div class="list-group list-group-flush">
+          <% @categories.each do |category| %>
+            <%= link_to products_path(category: "#{category.id}"), class: "list-group-item" do %>
+              <%= category.name %><span class="float-right badge badge-light round"></span>
+            <% end %>
+          <% end %>
+        </div>  <!-- list-group .// -->
+      </div>
+    </article> <!-- card-group-item.// -->
+    <article class="card-group-item">
+      <header class="card-header"><h6 class="title"><%= t "products.index.rating" %></h6></header>
+      <div class="filter-content">
+        <div class="list-group list-group-flush">
+          <%= link_to products_path(top_rating: Settings.desc), class: "list-group-item" do %>
+            Highest<span class="float-right badge badge-light round"></span>
+          <% end %>
+        </div>  <!-- list-group .// -->
+      </div>
+    </article> <!-- card-group-item.// -->
+    <article class="card-group-item">
+      <header class="card-header"><h6 class="title"><%= t "products.index.type" %></h6></header>
+      <div class="filter-content">
+        <div class="list-group list-group-flush">
+          <% types.each do |type| %>
+            <%= link_to products_path(by_type: type), class: "list-group-item" do %>
+              <%= type.upcase %><span class="float-right badge badge-light round"></span>
+            <% end %>
+          <% end %>
+        </div>  <!-- list-group .// -->
+      </div>
+    </article> <!-- card-group-item.// -->
+    <article class="card-group-item">
+      <header class="card-header"><h6 class="title"><%= t "products.index.price_orders" %></h6></header>
+      <div class="filter-content">
+        <div class="list-group list-group-flush">
+          <% price_orders.each do |price_order| %>
+            <%= link_to products_path(price: price_order), class: "list-group-item" do %>
+              <%= price_order %><span class="float-right badge badge-light round"></span>
+            <% end %>
+          <% end %>
+        </div>  <!-- list-group .// -->
+      </div>
+    </article> <!-- card-group-item.// -->
+  </div> <!-- card.// -->
+</aside> <!-- col.// -->

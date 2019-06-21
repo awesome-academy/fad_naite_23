@@ -25,7 +25,8 @@ class Admin::OrdersController < AdminController
 
   def query_search
     @orders = Order.newest.by_status(params[:search]).paginate(
-      page: params[:page], per_page: Settings.index_per_page)
+      page: params[:page], per_page: Settings.index_per_page
+    )
   end
 
   def load_order

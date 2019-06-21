@@ -2,8 +2,15 @@ class RatingsController < ApplicationController
   before_action :load_rated_product, only: :create
 
   def create
-    rating = current_user.ratings.new rating_params
-    @flag = rating.save
+    @rating = current_user.ratings.new rating_params
+    begin
+      Rating.transaction do
+        @rating.save!
+        @product.update_attributes!(average_rating: calc_avg_rating)
+      end
+    rescue
+      @rating.errors.add :rating, t("update_failed")
+    end
     respond_to do |format|
       format.html{redirect_to @product}
       format.js

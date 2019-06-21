@@ -2,7 +2,9 @@ class OrderListsController < ApplicationController
   before_action :valid_order
 
   def update
-    flash[:danger] = t("cant_order") unless @order_list.update_attributes list_params
+    unless @order_list.update_attributes list_params
+      flash[:danger] = t("cant_order")
+    end
     redirect_to edit_order_path(@order)
   end
 

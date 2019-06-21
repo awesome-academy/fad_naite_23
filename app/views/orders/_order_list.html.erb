@@ -2,7 +2,7 @@
   <td class="col-sm-8 col-md-6">
     <div class="media">
       <%= link_to product_path(order_list.product), class: "thumbnail pull-left" do %>
-      <%= image_tag order_list.product.picture, class:"media-object" %>
+      <%= image_tag order_list.product.picture.url, class:"media-object" %>
       <% end %>
       <div class="media-body">
         <h4 class="media-heading"><a href="#"><%= order_list.product.name %></a></h4>

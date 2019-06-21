@@ -1,3 +1,5 @@
+<h3><%= t "average_rating" %><%= @product.average_rating %></h3>
+<h3><%= t "your_rating" %></h3>
 <%= form_for(current_rating, class: "form_group", id: "rating-ability-wrapper", remote: true) do |f| %>
   <%= f.hidden_field :product_id, value: @product.id %>
   <% (Settings.rates).each do |i| %>
