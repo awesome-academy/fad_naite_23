@@ -1,8 +1,9 @@
-<div class="col-md-3 column productbox">
+<div class="col-md-4 column productbox">
   <% path = logged_admin? ? admin_product_path(product) : product %>
   <%= link_to path do %>
-    <%= image_tag product.picture, class: "img-responsive" %>
-    <div class="producttitle"><%= product.name %></div>
+    <%= image_tag product.picture.url, class: "img-responsive" %>
+    <div class="producttitle"><%= product.name %>
+    <p class="pull-right rating"><%= product.average_rating %></p></div>
   <% end %>
   <div class="productprice">
     <div class="pull-right">

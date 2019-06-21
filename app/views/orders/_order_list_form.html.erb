@@ -2,7 +2,7 @@
   <td class="col-sm-8 col-md-6">
     <div class="media">
       <%= link_to product_path(order_list.product), class: "thumbnail pull-left" do %>
-      <%= image_tag order_list.product.picture, class:"media-object" %>
+      <%= image_tag order_list.product.picture.url, class:"media-object" %>
       <% end %>
       <div class="media-body">
         <h4 class="media-heading"><a href="#"><%= order_list.product.name %></a></h4>
@@ -10,9 +10,9 @@
       </div>
     </div>
   </td>
-  <%= form_for(order_list) do |f| %>
     <td class="col-sm-1 col-md-1 text-center" >
-      <%= f.number_field :quantity, value: order_list.quantity, min: Settings.min_quantity, class: "form-control" %>
+      <%= number_field_tag "order_list[quantity]", order_list.quantity,
+        form: order_list.id, min: Settings.min_quantity, class: "form-control" %>
     </td>
     <td class="col-sm-1 col-md-1 text-center"><strong><%= order_list.unit_sold_price %></strong></td>
     <td class="col-sm-1 col-md-1 text-center"><strong><%= order_list.unit_sold_price * order_list.quantity %></strong></td>
@@ -22,11 +22,12 @@
         <span class="glyphicon glyphicon-remove"></span><%= t "carts.show.remove" %>
       <% end %>
     </td>
-    <%= hidden_field_tag :order_id, order_list.order.id %>
     <td class="col-sm-1 col-md-1">
-      <%= f.button(type: "submit", class: "btn btn-info") do %>
-        <span class="glyphicon glyphicon-refresh"></span>
+      <%= form_for(order_list, html: {id: order_list.id}) do |f| %>
+        <%= hidden_field_tag :order_id, order_list.order.id %>
+        <%= f.button(type: "submit", class: "btn btn-info", form: order_list.id) do %>
+          <span class="glyphicon glyphicon-refresh"></span>
+        <% end %>
       <% end %>
     </td>
-  <% end %>
 </tr>

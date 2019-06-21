@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  helper_method :calc_avg_rating
   protect_from_forgery with: :exception
   include SessionsHelper
 
@@ -42,10 +43,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def query_search_products
-    @products = Product.newest.by_type(params[:search]).paginate(
-      page: params[:page],
-      per_page: Settings.index_per_page
-    )
+  def calc_avg_rating
+    ratings = @product.ratings
+    ratings.reduce(0.0){|a, e| a + e.rate} / ratings.size
   end
 end

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :require_log_in
   before_action :load_cart_products, only: :create
   before_action :load_order, except: %i(index new create)
   before_action :calc_sub_total, only: %i(edit show)

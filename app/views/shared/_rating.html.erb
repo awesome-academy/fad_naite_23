@@ -1,3 +1,5 @@
+<h3><%= t "average_rating" %><%= @product.average_rating %></h3>
+<h3><%= t "your_rating" %></h3>
 <% (Settings.rates).each do |i| %>
   <%= button_tag(type: "button", class: "btn btn-lg #{toggled_rating? i}") do %>
     <i class="fa fa-star" aria-hidden="true"></i>

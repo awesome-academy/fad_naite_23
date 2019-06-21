@@ -27,20 +27,24 @@ end
     description: description)
 end
 
+
+
 categories = Category.all
-types = ["food", "drink"]
+types = [Settings.food, Settings.drink]
 10.times do |n|
-  name = Faker::Food.dish
-  description = Faker::Food.description
-  price = Faker::Number.number(3)
-  picture = "http://placehold.it/460x250/e67e22/ffffff&text=HTML5"
-  product_type = types.sample
   categories.each do |category|
+    name = Faker::Food.dish
+    description = Faker::Food.description
+    price = Faker::Number.number(3)
+    picture = Pathname.new(Rails.root.join("app/assets/images/test.png")).open
+    product_type = types.sample
+    rating = Faker::Number.between(1, 5)
     category.products.create!(name: name,
     description: description,
     price: price,
     picture: picture,
-    product_type: product_type)
+    product_type: product_type,
+    average_rating: rating)
   end
 end
 
